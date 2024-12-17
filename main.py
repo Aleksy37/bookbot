@@ -5,6 +5,7 @@ def main():
     chars_dict = get_char_dict(text)
     freq_report = get_freq_report(chars_dict)
     book_report = get_book_report(freq_report)
+
     print(f"--- Begin report of {book_path} ---")
     print(f"{num_words} words found in the document")
     print()
@@ -14,9 +15,7 @@ def main():
 def get_book_report(freq_report):
     report = []
     for i in freq_report:
-        char = i["char"]
-        freq = i["freq"]
-        report.append(f"The '{char}' character was found {freq} times")
+        report.append(f"The '{i['char']}' character was found {i['freq']} times")
     return "\n".join(report)
 
 def get_num_words(text):
@@ -45,4 +44,5 @@ def get_char_dict(text):
 def get_book_text(path):
     with open(path) as f:
         return f.read()
+    
 main()
